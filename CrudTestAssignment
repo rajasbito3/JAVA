@@ -1,0 +1,91 @@
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+public class CrudTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Trying to read persistence.xml file...");
+
+		// 3
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("MyJPA");
+		System.out.println("EntityManagerFactory created....");
+
+		EntityManager em = emf.createEntityManager();
+		System.out.println("EntityManager created....");
+
+		EntityTransaction et = em.getTransaction();
+		System.out.println("EntityTransaction created....");
+
+		System.out.println("Trying to create record....."); //CREATE RECORD
+		Flight theFlight = new Flight();
+		// theFlight.setFlightNumber(103);
+		theFlight.setFlightName("Air America");
+		theFlight.setFlightSource("Delhi");
+		theFlight.setFlightDestination("Mumbai");
+		theFlight.setFlightTicketCost(7500);
+		theFlight.setNumberOfPassengers(100);
+		theFlight.setFlightDepartureFromSource(LocalDateTime.now());
+		theFlight.setFlightArrivalAtDestination(LocalDateTime.now());
+
+		et.begin();
+		em.persist(theFlight);
+		et.commit();
+		System.out.println("=================");
+		et.begin();
+		Flight f = em.find(Flight.class, 27); //UPDATE
+		f.setFlightDestination("Chennai");
+		em.merge(f);
+		et.commit();
+
+		System.out.println("Created the record.....");
+		
+	/*	et.begin();
+		Flight f1=em.find(Flight.class, 24); //DELETE
+		em.remove(f1);
+		System.out.println("Deleted the Record"+f1);
+		et.commit(); */
+		
+		et.begin();
+		Flight f2=em.find(Flight.class, 25); //Read
+		System.out.println("Retrieved the Below record");
+		System.out.println("Flight Number:"+f2.getFlightNumber());
+		System.out.println("Flight Arrival At Destination:"+f2.getFlightArrivalAtDestination());
+		System.out.println("Flight Departure From Source:"+f2.getFlightDepartureFromSource());
+		System.out.println("Flight Destination:"+f2.getFlightDestination());
+		System.out.println("Flight Name:"+f2.getFlightName());
+		System.out.println("Flight Source:"+f2.getFlightSource());
+		System.out.println("Flight Ticket Cost:"+f2.getFlightTicketCost());
+		System.out.println("Number of Passengers:"+f2.getNumberOfPassengers());
+		et.commit();
+		
+		
+		Query q=em.createNativeQuery("SELECT * FROM flight_info",Flight.class); //GET All Records
+		List<Flight> f4=q.getResultList();
+		for(Flight list:f4)
+		{
+			System.out.println("Listing All the records available in Database");
+			System.out.println("Flight Number:"+list.getFlightNumber());
+			System.out.println("Flight Arrival At Destination:"+list.getFlightArrivalAtDestination());
+			System.out.println("Flight Departure From Source:"+list.getFlightDepartureFromSource());
+			System.out.println("Flight Destination:"+list.getFlightDestination());
+			System.out.println("Flight Name:"+list.getFlightName());
+			System.out.println("Flight Source:"+list.getFlightSource());
+			System.out.println("Flight Ticket Cost:"+list.getFlightTicketCost());
+			System.out.println("Number of Passengers:"+list.getNumberOfPassengers());
+			System.out.println("**************************************************");
+		}
+		
+		
+		
+		
+	}
+
+}
