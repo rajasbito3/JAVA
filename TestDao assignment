@@ -1,0 +1,65 @@
+import java.util.List;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+public class TestDAO {
+	
+	FlightDAO flightDao = new FlightDAOImpl();
+	
+	@Test
+	public void testSelectDAO() {
+		
+		Flight f = flightDao.findFlightById(1);
+		Assertions.assertTrue(f!=null);
+		System.out.println("Flight number : "+f.getFlightNumber());
+		System.out.println("Flight name   : "+f.getFlightName());
+		System.out.println("Flight source : "+f.getFlightSource());
+		System.out.println("Flight dest   : "+f.getFlightDestination());
+		System.out.println("Flight arrtime: "+f.getFlightArrivalAtDestination());
+		System.out.println("Flight deptime: "+f.getFlightDepartureFromSource());
+		System.out.println("Flight nop    : "+f.getNumberOfPassengers());
+		System.out.println("Flight cost   : "+f.getFlightTicketCost());
+	
+	}
+		@Test
+		public void findAllFlights() {
+			List<Flight> f=flightDao.findAllFlights();
+			for(Flight list:f) 
+			{
+			System.out.println("Flight number : "+list.getFlightNumber());
+			System.out.println("Flight name   : "+list.getFlightName());
+			}		
+		}
+		@Test
+		public void updateFlight() {
+			
+			Flight f = flightDao.findFlightById(2);
+			Assertions.assertTrue(f!=null);
+			f.setFlightSource("Chennai");
+			flightDao.updateFlight(f);
+			System.out.println("Flight number : "+f.getFlightNumber());
+			System.out.println("Flight name   : "+f.getFlightName());
+			System.out.println("Flight source : "+f.getFlightSource());
+			System.out.println("Flight dest   : "+f.getFlightDestination());
+			System.out.println("Flight arrtime: "+f.getFlightArrivalAtDestination());
+			System.out.println("Flight deptime: "+f.getFlightDepartureFromSource());
+			System.out.println("Flight nop    : "+f.getNumberOfPassengers());
+			System.out.println("Flight cost   : "+f.getFlightTicketCost());
+			
+								
+		}
+		@Test
+		public void deleteFlight() {
+			Flight f = flightDao.findFlightById(1);
+			Assertions.assertTrue(f!=null);
+			flightDao.deleteFlight(1);
+			System.out.println(" Flight Details Deleted");
+					
+		}
+		
+			
+			
+		
+		
+}
