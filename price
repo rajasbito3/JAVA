@@ -1,0 +1,85 @@
+package one2many;
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="price")
+
+public class Price {
+	
+	@Id
+	@Column(name="PRODID")
+	private int ProdId;
+	
+	@ManyToOne
+	@JoinColumn(name="PRODID")
+	private Product product;
+	
+	@Column(name="STDPRICE")
+	private int StdPrice;
+	
+	@Column(name="MINPRICE")
+	private int MinPrice;
+	
+	@Column(name="STARTDATE")
+	private LocalDate StartDate;
+	
+	@Column(name="ENDDATE")
+	private LocalDate EndDate;
+
+	public int getProdId() {
+		return ProdId;
+	}
+
+	public void setProdId(int prodId) {
+		ProdId = prodId;
+	}
+
+	public int getStdPrice() {
+		return StdPrice;
+	}
+
+	public void setStdPrice(int stdPrice) {
+		StdPrice = stdPrice;
+	}
+
+	public int getMinPrice() {
+		return MinPrice;
+	}
+
+	public void setMinPrice(int minPrice) {
+		MinPrice = minPrice;
+	}
+
+	public LocalDate getStartDate() {
+		return StartDate;
+	}
+
+	public void setStartDate(LocalDate startDate) {
+		StartDate = startDate;
+	}
+
+	public LocalDate getEndDate() {
+		return EndDate;
+	}
+
+	public void setEndDate(LocalDate endDate) {
+		EndDate = endDate;
+	}
+
+	public Price(int prodId, Product product, int stdPrice, int minPrice, LocalDate startDate, LocalDate endDate) {
+		super();
+		ProdId = prodId;
+		this.product = product;
+		StdPrice = stdPrice;
+		MinPrice = minPrice;
+		StartDate = startDate;
+		EndDate = endDate;
+	}
+}
