@@ -1,0 +1,20 @@
+import { Component, OnInit } from '@angular/core';
+import { User } from '../login1/User';
+import { UserDetailModule } from '../user-detail/user-detail.module';
+
+@Component({
+  selector: 'app-dash-board',
+  templateUrl: './dash-board.component.html',
+  styleUrls: ['./dash-board.component.css']
+})
+export class DashBoardComponent implements OnInit {
+  userobj: User=new User();
+
+  constructor() { }
+anyobject: any;
+  ngOnInit(): void {
+    this.anyobject=sessionStorage.getItem("x");
+    this.userobj=JSON.parse(this.anyobject);
+  }
+
+}
