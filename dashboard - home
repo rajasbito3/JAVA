@@ -1,0 +1,5 @@
+<p>dash-board works!</p>
+
+<li> User {{userobj.username}}, Welcome to User Dashboard</li>
+
+<li> <a routerLink="/login">Logout </a></li>
