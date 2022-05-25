@@ -8,5 +8,4 @@ insert into applicant values (20220006,'03-FEB-1993','A-202 SAI VIHAR CBD Belapu
 
 insert into applicant values (20220002,'25-NOV-1996','A-202 Trimbhak Towers CBD Belapur 400614',800000,'25-MAY-2022','Applied Successfully','Current Account','10-NOV-1992','Graduate','ranjth01@gmail.com','Ram Mishra’,'Ranjith Mishra’,'Male',NULL,NULL,8597774,'Aadhar Number','Mishra','Married',NULL,'shweta mishra’,'A-202 Trimbhak Towers CBD Belapur 400614','pooja mishra','Spouse','PSU','RNJH85977A',9445613125,'Hindu',NULL,'pooja mishra','Mr.');
 
-
 insert into applicant values (20220007,'10-MAY-1961','A-103  LAKHANI GALAXY CBD Belapur 400614',600000,'25-MAY-2022','Applied Successfully','Savings Account','01-JAN-1999','Graduate','ritu@gmail.com’,'bhushan kumar’,'Ritu Kumari’,'Female',NULL,NULL,1015447,'Aadhar Number','Kumari’,'Single',NULL,'shweta kumari’,'A-103  LAKHANI GALAXY CBD Belapur 400614','shweta kumari’,'mother','PSU','KUMR87698I',9176935526,'hindu',NULL,'NULL','Ms.');
