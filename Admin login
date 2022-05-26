@@ -1,0 +1,10 @@
+<body class="body">
+<div class="box">
+    <h2>Admin Login</h2>
+<input type="text" [(ngModel)]="username" placeholder="Username">
+<input type="password" [(ngModel)]="password" placeholder="Password">
+
+<button (click)="checkAdmin()">Login</button>
+</div>
+<router-outlet></router-outlet>
+</body>
