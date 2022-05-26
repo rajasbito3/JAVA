@@ -4,7 +4,7 @@
 <input type="text" [(ngModel)]="username" placeholder="Username">
 <input type="password" [(ngModel)]="password" placeholder="Password">
 
-<button (click)="checkAdmin()">Login</button>
+<button (click)="LoginFun()">Login</button>
 </div>
 <router-outlet></router-outlet>
 </body>
